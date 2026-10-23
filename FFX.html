@@ -11,7 +11,7 @@
 <link rel="shortcut icon" href="Main logo.jpg" data-site-favicon>
 <link rel="apple-touch-icon" href="Main logo.jpg" data-site-favicon>
 <meta property="og:image" content="Main logo.jpg">
-<title>FF TOP UP</title>
+<title>Nickname</title>
 <script>
 // =======================================================
 // INSTANT CONFIG LOADER & CACHE-BUSTER (Render Live Update)
@@ -514,6 +514,57 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
 #inView .pk span,#inView .pk b{pointer-events:none}
 #inView .pk:active{transform:none;background:#eff5ff}
 #inView .pk{-webkit-appearance:none;appearance:none;font-family:inherit}
+
+/* ===== SIGN IN / SIGN UP MODAL (MATCHING THEME) ===== */
+.auth-ov{position:fixed;inset:0;z-index:110;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(10,22,55,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s,visibility 0s .28s}
+.auth-ov.show{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .28s,visibility 0s}
+.auth-card{position:relative;width:min(100%,410px);max-height:calc(100vh - 32px);overflow-y:auto;background:#fff;border-radius:26px;border:1.8px solid #1e293b;box-shadow:0 6px 0 #1e293b,0 28px 65px -10px rgba(10,22,55,.55);transform:translateY(22px) scale(.95);transition:transform .34s cubic-bezier(.2,.9,.3,1.1);scrollbar-width:none}
+.auth-card::-webkit-scrollbar{display:none}
+.auth-ov.show .auth-card{transform:none}
+.auth-head{position:relative;padding:24px 20px 18px;text-align:center;background:linear-gradient(145deg,#eff6ff 0%,#dbeafe 55%,#eff6ff 100%);border-bottom:1px solid var(--bd);overflow:hidden}
+.auth-head:before{content:"";position:absolute;right:-40px;top:-45px;width:130px;height:130px;border-radius:50%;background:rgba(37,99,235,.1)}
+.auth-head:after{content:"";position:absolute;left:-35px;bottom:-45px;width:110px;height:110px;border-radius:50%;background:rgba(59,130,246,.1)}
+.auth-x{position:absolute;top:12px;right:12px;z-index:2;width:34px;height:34px;border-radius:50%;border:1px solid var(--bd);background:#fff;color:var(--tx);display:grid;place-items:center;font-size:16px;cursor:pointer;box-shadow:0 4px 10px rgba(15,23,42,.08);transition:.2s}
+.auth-x:hover{background:#eff6ff;color:var(--v);transform:scale(1.05)}
+.auth-x:active{transform:scale(.94)}
+.auth-badge{position:relative;z-index:1;width:54px;height:54px;margin:0 auto 10px;border-radius:16px;background:var(--g);color:#fff;display:grid;place-items:center;font-size:26px;box-shadow:0 10px 22px -6px rgba(37,99,235,.65);border:2.5px solid #fff}
+.auth-head h3{position:relative;z-index:1;font-size:20px;font-weight:800;color:var(--tx);letter-spacing:-.3px}
+.auth-head p{position:relative;z-index:1;margin-top:4px;font-size:13px;color:var(--mu);font-weight:500}
+.auth-tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:16px 18px 4px;padding:5px;border-radius:15px;background:#f0f5ff;border:1px solid var(--bd)}
+.auth-tab{height:38px;border:0;border-radius:11px;background:transparent;color:var(--mu);font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:.22s}
+.auth-tab.on{background:var(--g);color:#fff;box-shadow:0 6px 14px -4px rgba(37,99,235,.55)}
+.auth-body{padding:14px 18px 22px}
+.auth-f{display:none}
+.auth-f.on{display:block;animation:afade .24s ease}
+@keyframes afade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.af-grp{margin-bottom:12px}
+.af-lbl{display:block;margin-bottom:5px;font-size:13px;font-weight:700;color:var(--tx)}
+.af-iw{position:relative;display:flex;align-items:center}
+.af-iw>svg{position:absolute;left:13px;font-size:18px;color:#64748b;pointer-events:none;transition:.2s}
+.af-inp{width:100%;height:44px;padding:0 40px 0 40px;border-radius:12px;border:1.5px solid #cbd5e1;background:#f8fafc;font-family:inherit;font-size:14px;font-weight:500;color:var(--tx);outline:none;transition:.2s}
+.af-inp:focus{background:#fff;border-color:var(--v);box-shadow:0 0 0 3.5px rgba(37,99,235,.14)}
+.af-iw:focus-within>svg{color:var(--v)}
+.af-eye{position:absolute;right:8px;width:32px;height:32px;border:0;border-radius:8px;background:transparent;color:#64748b;display:grid;place-items:center;font-size:17px;cursor:pointer}
+.af-eye:hover{color:var(--v);background:#eff6ff}
+.af-row{display:flex;align-items:center;justify-content:space-between;margin:4px 0 14px;font-size:12.5px}
+.af-rem{display:inline-flex;align-items:center;gap:6px;color:var(--mu);font-weight:600;cursor:pointer;user-select:none}
+.af-rem input{width:15px;height:15px;accent-color:var(--v);cursor:pointer}
+.af-fg{color:var(--v);font-weight:700;cursor:pointer}
+.af-fg:hover{text-decoration:underline}
+.af-err{display:none;align-items:center;gap:7px;margin-bottom:12px;padding:9px 12px;border-radius:11px;background:#fef2f2;border:1px solid #fecaca;color:#b91c1c;font-size:12.5px;font-weight:600}
+.af-err.show{display:flex}
+.af-err svg{font-size:16px;flex-shrink:0}
+.af-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;border:0;border-radius:13px;background:var(--g);color:#fff;font-family:inherit;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 10px 22px -8px rgba(37,99,235,.85);transition:.2s}
+.af-btn:hover{transform:translateY(-1px);box-shadow:0 14px 26px -8px rgba(37,99,235,.95)}
+.af-btn:active{transform:scale(.98)}
+.af-or{display:flex;align-items:center;gap:10px;margin:14px 0;color:#94a3b8;font-size:12px;font-weight:700;text-transform:uppercase}
+.af-or:before,.af-or:after{content:"";flex:1;height:1px;background:var(--bd)}
+.af-gg{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;height:42px;border-radius:12px;border:1.5px solid var(--bd);background:#fff;color:var(--tx);font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;transition:.2s}
+.af-gg:hover{background:#f8fafc;border-color:#93c5fd}
+.af-gg:active{transform:scale(.98)}
+.af-gg svg{width:18px;height:18px;flex-shrink:0}
+.af-sw{margin-top:15px;padding-top:13px;border-top:1px dashed var(--bd);text-align:center;font-size:13.5px;color:var(--mu);font-weight:600}
+.af-sw button{border:0;background:none;color:var(--v);font-family:inherit;font-size:13.5px;font-weight:800;cursor:pointer;margin-left:4px;text-decoration:underline}
 </style>
 </head>
 <body>
@@ -549,6 +600,10 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
 <symbol id="a-addm" viewBox="0 0 24 24"><path d="M5 2v6M2 5h6"/><path d="M5 11v8a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-6"/><rect x="12" y="13" width="5" height="4" rx="1"/></symbol>
 <symbol id="a-power" viewBox="0 0 24 24"><path d="M12 3v8"/><path d="M6.500 6.500a8 8 0 1 0 11 0"/></symbol>
 <symbol id="a-in" viewBox="0 0 24 24"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></symbol>
+<symbol id="mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></symbol>
+<symbol id="lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1.2"/></symbol>
+<symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="eye-off" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 19c-6.5 0-10-7-10-7a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c6.5 0 10 7 10 7a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><path d="M1 1l22 22"/></symbol>
 </svg>
 
 <header>
@@ -1154,6 +1209,93 @@ html,body,.pk,.po,.btn,.pay,.q,.card,.nav a,.pv-back{touch-action:manipulation}
   </div>
 </aside>
 
+<!-- SIGN IN / SIGN UP MODAL -->
+<div class="auth-ov" id="authModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="auth-card">
+    <div class="auth-head">
+      <button type="button" class="auth-x" id="authClose" aria-label="Close"><svg class="i"><use href="#x"/></svg></button>
+      <div class="auth-badge"><svg class="i"><use href="#user"/></svg></div>
+      <h3 id="authTitle">Welcome Back!</h3>
+      <p id="authSub">লগইন করে দ্রুত ও নিরাপদে টপআপ করুন</p>
+    </div>
+
+    <div class="auth-tabs">
+      <button type="button" class="auth-tab on" id="tabSignIn">Sign In</button>
+      <button type="button" class="auth-tab" id="tabSignUp">Sign Up</button>
+    </div>
+
+    <div class="auth-body">
+      <div class="af-err" id="authErr"><svg class="i"><use href="#warn"/></svg><span id="authErrTxt"></span></div>
+
+      <!-- SIGN IN FORM -->
+      <form class="auth-f on" id="formSignIn" novalidate>
+        <div class="af-grp">
+          <label class="af-lbl" for="siEmail">ইমেইল অথবা মোবাইল নাম্বার</label>
+          <div class="af-iw">
+            <svg class="i"><use href="#mail"/></svg>
+            <input class="af-inp" id="siEmail" type="text" autocomplete="username" placeholder="example@gmail.com / 017XXXXXXXX" required>
+          </div>
+        </div>
+        <div class="af-grp">
+          <label class="af-lbl" for="siPass">পাসওয়ার্ড</label>
+          <div class="af-iw">
+            <svg class="i"><use href="#lock"/></svg>
+            <input class="af-inp" id="siPass" type="password" autocomplete="current-password" placeholder="আপনার পাসওয়ার্ড দিন" required>
+            <button type="button" class="af-eye" data-toggle-pass="siPass" aria-label="Show Password"><svg class="i"><use href="#eye"/></svg></button>
+          </div>
+        </div>
+        <div class="af-row">
+          <label class="af-rem"><input type="checkbox" checked> মনে রাখুন</label>
+          <span class="af-fg" id="forgotBtn">পাসওয়ার্ড ভুলে গেছেন?</span>
+        </div>
+        <button type="submit" class="af-btn"><svg class="i"><use href="#a-in"/></svg><span>Sign In করুন</span></button>
+        <div class="af-or">অথবা</div>
+        <button type="button" class="af-gg" id="googleSignIn">
+          <svg viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.8C6.2 7.2 8.9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.6l3.7 2.9c2.2-2 3.7-5 3.7-8.7z"/><path fill="#FBBC05" d="M5.3 14.8c-.2-.8-.4-1.6-.4-2.5s.2-1.7.4-2.5L1.6 7C.6 9 0 11.2 0 13.5s.6 4.5 1.6 6.5l3.7-2.9z" transform="translate(0 -1.2)"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3.1 0-5.8-2.1-6.7-5l-3.7 2.9C3.5 20.4 7.4 23 12 23z"/></svg>
+          <span>Continue with Google</span>
+        </button>
+        <div class="af-sw">কোনো অ্যাকাউন্ট নেই? <button type="button" id="goSignUp">Sign Up করুন</button></div>
+      </form>
+
+      <!-- SIGN UP FORM -->
+      <form class="auth-f" id="formSignUp" novalidate>
+        <div class="af-grp">
+          <label class="af-lbl" for="suName">আপনার নাম</label>
+          <div class="af-iw">
+            <svg class="i"><use href="#user"/></svg>
+            <input class="af-inp" id="suName" type="text" autocomplete="name" placeholder="আপনার পূর্ণ নাম লিখুন" required>
+          </div>
+        </div>
+        <div class="af-grp">
+          <label class="af-lbl" for="suEmail">ইমেইল অথবা মোবাইল নাম্বার</label>
+          <div class="af-iw">
+            <svg class="i"><use href="#mail"/></svg>
+            <input class="af-inp" id="suEmail" type="text" autocomplete="username" placeholder="example@gmail.com / 017XXXXXXXX" required>
+          </div>
+        </div>
+        <div class="af-grp">
+          <label class="af-lbl" for="suPass">নতুন পাসওয়ার্ড</label>
+          <div class="af-iw">
+            <svg class="i"><use href="#lock"/></svg>
+            <input class="af-inp" id="suPass" type="password" autocomplete="new-password" placeholder="কমপক্ষে ৪ অক্ষরের পাসওয়ার্ড" required>
+            <button type="button" class="af-eye" data-toggle-pass="suPass" aria-label="Show Password"><svg class="i"><use href="#eye"/></svg></button>
+          </div>
+        </div>
+        <div class="af-grp">
+          <label class="af-lbl" for="suPass2">কনফার্ম পাসওয়ার্ড</label>
+          <div class="af-iw">
+            <svg class="i"><use href="#lock"/></svg>
+            <input class="af-inp" id="suPass2" type="password" autocomplete="new-password" placeholder="পাসওয়ার্ডটি পুনরায় লিখুন" required>
+            <button type="button" class="af-eye" data-toggle-pass="suPass2" aria-label="Show Password"><svg class="i"><use href="#eye"/></svg></button>
+          </div>
+        </div>
+        <button type="submit" class="af-btn"><svg class="i"><use href="#chk"/></svg><span>Sign Up / অ্যাকাউন্ট খুলুন</span></button>
+        <div class="af-sw">আগে থেকেই অ্যাকাউন্ট আছে? <button type="button" id="goSignIn">Sign In করুন</button></div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="pop" id="pop" role="dialog" aria-modal="true">
   <div class="pbox">
     <div class="pimg ph"><img src="Notification.jpg" alt="Notification"></div>
@@ -1529,42 +1671,81 @@ setInterval(fetchFreshAccountConfig, 15000);
 })();
 
 // ==========================================
-// 3b. ACCOUNT MENU (প্রোফাইল আইকনে ক্লিক করলে খোলে)
+// 3b. ACCOUNT MENU & SIGN IN / SIGN UP SYSTEM
 // ==========================================
 (function(){
-  // লগইন সিস্টেম যুক্ত করলে এখানে ইউজারের তথ্য বসান
-  var USER = {
-    loggedIn: false,          // লগইন থাকলে true
-    name: '',                 // যেমন: 'MD EACIN 69'
-    email: '',                // যেমন: 'eacin69x@gmail.com'
-    avatar: ''                // প্রোফাইল ছবির লিংক (ফাঁকা থাকলে ডিফল্ট আইকন)
+  var STORAGE_USER_KEY = 'ffx_current_user';
+  var STORAGE_USERS_LIST = 'ffx_registered_users';
+
+  function loadStoredUser() {
+    try {
+      var raw = localStorage.getItem(STORAGE_USER_KEY);
+      if (raw) {
+        var parsed = JSON.parse(raw);
+        if (parsed && parsed.loggedIn) return parsed;
+      }
+    } catch(e) {}
+    return { loggedIn: false, name: '', email: '', avatar: '', balance: 0 };
+  }
+
+  var USER = loadStoredUser();
+  var authListeners = [];
+
+  window.FFX_AUTH = {
+    isLoggedIn: function() { return !!USER.loggedIn; },
+    getUser: function() { return USER; },
+    onChange: function(fn) {
+      if (typeof fn === 'function') authListeners.push(fn);
+    }
   };
-  var LOGIN_URL = '#';
-  var LOGOUT_URL = '#';
+
+  function notifyAuthChange() {
+    renderAccountMenu();
+    authListeners.forEach(function(fn) {
+      try { fn(USER); } catch(e) {}
+    });
+  }
 
   var panel = document.getElementById('accPanel');
   var navLinks = [].slice.call(document.querySelectorAll('nav.nav a'));
   var navHome = navLinks[0], navAcc = navLinks[4];
+  var toastEl = document.getElementById('toast'), tt;
+  function showToast(m) {
+    if (!toastEl) return;
+    toastEl.textContent = m;
+    toastEl.classList.add('show');
+    clearTimeout(tt);
+    tt = setTimeout(function(){ toastEl.classList.remove('show'); }, 2600);
+  }
 
-  // ইউজার তথ্য বসানো
-  (function render(){
+  function renderAccountMenu(){
     var n = USER.name ? USER.name.trim() : '';
     document.getElementById('accName').textContent = USER.loggedIn && n ? 'Hi, ' + n : 'Hi, Guest';
     document.getElementById('accMail').textContent = USER.loggedIn && USER.email ? USER.email : 'লগইন করে অর্ডার করুন';
-    if (USER.avatar) {
-      var box = document.getElementById('accAv');
+    var box = document.getElementById('accAv');
+    if (USER.loggedIn && USER.avatar) {
       box.innerHTML = '';
       var im = document.createElement('img'); im.src = USER.avatar; im.alt = 'Profile';
       box.appendChild(im);
+    } else {
+      box.innerHTML = '<svg class="i"><use href="#user"/></svg>';
     }
     var lo = document.getElementById('accLo');
     lo.querySelector('span').textContent = USER.loggedIn ? 'Logout' : 'Login';
     lo.querySelector('use').setAttribute('href', USER.loggedIn ? '#a-power' : '#a-in');
     lo.onclick = function(){
-      var u = USER.loggedIn ? LOGOUT_URL : LOGIN_URL;
-      if (u && u !== '#') location.href = u;
+      if (USER.loggedIn) {
+        USER = { loggedIn: false, name: '', email: '', avatar: '', balance: 0 };
+        try { localStorage.removeItem(STORAGE_USER_KEY); } catch(e) {}
+        notifyAuthChange();
+        closeAcc();
+        showToast('সফলভাবে লগআউট হয়েছে');
+      } else {
+        closeAcc();
+        window.openAuthModal('signin');
+      }
     };
-  })();
+  }
 
   function setNav(open){
     if (!navHome || !navAcc) return;
@@ -1591,13 +1772,12 @@ setInterval(fetchFreshAccountConfig, 15000);
   });
   document.getElementById('accClose').onclick = closeAcc;
   panel.addEventListener('click', function(e){ if (e.target === panel) closeAcc(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAcc(); });
 
   // নিচের নেভিগেশন: Home চাপলে বন্ধ, My Account চাপলে খোলে
   if (navHome) navHome.addEventListener('click', function(e){ e.preventDefault(); closeAcc(); location.hash = ''; });
   if (navAcc) navAcc.addEventListener('click', function(e){ e.preventDefault(); openAcc(); });
 
-  // মেনু আইটেমে ক্লিক: এখানে নিজের পেজের লিংক বসান
+  // মেনু আইটেমে ক্লিক
   var PAGES = { account:'#', orders:'#', codes:'#', transaction:'#', addmoney:'#' };
   document.querySelectorAll('.acc-it[data-go]').forEach(function(a){
     a.addEventListener('click', function(e){
@@ -1605,15 +1785,184 @@ setInterval(fetchFreshAccountConfig, 15000);
       if (go === 'account') { e.preventDefault(); return; }
       var u = PAGES[go];
       if (u && u !== '#') { e.preventDefault(); location.href = u; }
-      else e.preventDefault();
+      else {
+        e.preventDefault();
+        if (!USER.loggedIn) { closeAcc(); window.openAuthModal('signin'); }
+        else { showToast('শীঘ্রই আসছে...'); }
+      }
     });
   });
 
-  // ফুটারের "Add Money" নেভ বাটন
-  if (navLinks[2]) navLinks[2].addEventListener('click', function(e){
-    e.preventDefault();
-    if (PAGES.addmoney && PAGES.addmoney !== '#') location.href = PAGES.addmoney;
+  // ফুটারের নেভ বাটনসমূহ (My Orders, Add Money, My Codes)
+  [1, 2, 3].forEach(function(idx){
+    if (navLinks[idx]) navLinks[idx].addEventListener('click', function(e){
+      e.preventDefault();
+      if (!USER.loggedIn) window.openAuthModal('signin');
+      else showToast('শীঘ্রই আসছে...');
+    });
   });
+
+  // ===== AUTH MODAL LOGIC (Sign In & Sign Up) =====
+  var authModal = document.getElementById('authModal');
+  var authClose = document.getElementById('authClose');
+  var tabSignIn = document.getElementById('tabSignIn');
+  var tabSignUp = document.getElementById('tabSignUp');
+  var formSignIn = document.getElementById('formSignIn');
+  var formSignUp = document.getElementById('formSignUp');
+  var authTitle = document.getElementById('authTitle');
+  var authSub = document.getElementById('authSub');
+  var authErr = document.getElementById('authErr');
+  var authErrTxt = document.getElementById('authErrTxt');
+
+  function showErr(msg) {
+    if (!msg) {
+      authErr.classList.remove('show');
+      authErrTxt.textContent = '';
+    } else {
+      authErrTxt.textContent = msg;
+      authErr.classList.add('show');
+    }
+  }
+
+  function switchAuthTab(mode) {
+    var isUp = mode === 'signup';
+    tabSignIn.classList.toggle('on', !isUp);
+    tabSignUp.classList.toggle('on', isUp);
+    formSignIn.classList.toggle('on', !isUp);
+    formSignUp.classList.toggle('on', isUp);
+    authTitle.textContent = isUp ? 'Create Account' : 'Welcome Back!';
+    authSub.textContent = isUp ? 'নতুন অ্যাকাউন্ট খুলে সহজেই টপআপ অর্ডার করুন' : 'লগইন করে দ্রুত ও নিরাপদে টপআপ করুন';
+    showErr('');
+  }
+
+  window.openAuthModal = function(mode) {
+    switchAuthTab(mode === 'signup' ? 'signup' : 'signin');
+    authModal.classList.add('show');
+    authModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeAuthModal() {
+    authModal.classList.remove('show');
+    authModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    showErr('');
+  }
+
+  authClose.onclick = closeAuthModal;
+  authModal.addEventListener('click', function(e){ if (e.target === authModal) closeAuthModal(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') {
+      if (authModal.classList.contains('show')) closeAuthModal();
+      else if (panel.classList.contains('show')) closeAcc();
+    }
+  });
+
+  tabSignIn.onclick = function(){ switchAuthTab('signin'); };
+  tabSignUp.onclick = function(){ switchAuthTab('signup'); };
+  document.getElementById('goSignUp').onclick = function(){ switchAuthTab('signup'); };
+  document.getElementById('goSignIn').onclick = function(){ switchAuthTab('signin'); };
+
+  // Show / Hide password toggle
+  document.querySelectorAll('[data-toggle-pass]').forEach(function(btn){
+    btn.onclick = function(){
+      var id = btn.getAttribute('data-toggle-pass');
+      var inp = document.getElementById(id);
+      if (!inp) return;
+      var isPass = inp.type === 'password';
+      inp.type = isPass ? 'text' : 'password';
+      var useEl = btn.querySelector('use');
+      if (useEl) useEl.setAttribute('href', isPass ? '#eye-off' : '#eye');
+    };
+  });
+
+  document.getElementById('forgotBtn').onclick = function(){
+    showToast('পাসওয়ার্ড রিসেট করতে সাপোর্টে মেসেজ দিন');
+  };
+
+  function getRegisteredUsers() {
+    try {
+      var raw = localStorage.getItem(STORAGE_USERS_LIST);
+      return raw ? JSON.parse(raw) : [];
+    } catch(e) { return []; }
+  }
+
+  function saveRegisteredUsers(list) {
+    try { localStorage.setItem(STORAGE_USERS_LIST, JSON.stringify(list)); } catch(e) {}
+  }
+
+  function completeLogin(name, email) {
+    USER = {
+      loggedIn: true,
+      name: name || 'User',
+      email: email || '',
+      avatar: '',
+      balance: 0
+    };
+    try { localStorage.setItem(STORAGE_USER_KEY, JSON.stringify(USER)); } catch(e) {}
+    notifyAuthChange();
+    closeAuthModal();
+  }
+
+  // Sign In Submit
+  formSignIn.addEventListener('submit', function(e){
+    e.preventDefault();
+    var identifier = document.getElementById('siEmail').value.trim();
+    var pass = document.getElementById('siPass').value;
+    if (!identifier) { showErr('আপনার ইমেইল অথবা মোবাইল নাম্বার দিন'); return; }
+    if (!pass || pass.length < 4) { showErr('সঠিক পাসওয়ার্ড দিন (কমপক্ষে ৪ অক্ষর)'); return; }
+
+    var users = getRegisteredUsers();
+    var found = null;
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].email.toLowerCase() === identifier.toLowerCase()) {
+        found = users[i];
+        break;
+      }
+    }
+    if (found && found.password !== pass) {
+      showErr('পাসওয়ার্ড সঠিক নয়! আবার চেষ্টা করুন।');
+      return;
+    }
+    var displayName = found ? found.name : identifier.split('@')[0];
+    completeLogin(displayName, identifier);
+    showToast('সফলভাবে লগইন হয়েছে! স্বাগতম, ' + displayName);
+  });
+
+  // Sign Up Submit
+  formSignUp.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('suName').value.trim();
+    var email = document.getElementById('suEmail').value.trim();
+    var pass = document.getElementById('suPass').value;
+    var pass2 = document.getElementById('suPass2').value;
+
+    if (name.length < 2) { showErr('আপনার পূর্ণ নাম লিখুন'); return; }
+    if (email.length < 5) { showErr('সঠিক ইমেইল অথবা মোবাইল নাম্বার দিন'); return; }
+    if (pass.length < 4) { showErr('কমপক্ষে ৪ অক্ষরের পাসওয়ার্ড দিন'); return; }
+    if (pass !== pass2) { showErr('দুটি পাসওয়ার্ড মিলছে না!'); return; }
+
+    var users = getRegisteredUsers();
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].email.toLowerCase() === email.toLowerCase()) {
+        showErr('এই ইমেইল/নাম্বার দিয়ে আগেই অ্যাকাউন্ট খোলা হয়েছে!');
+        return;
+      }
+    }
+    users.push({ name: name, email: email, password: pass });
+    saveRegisteredUsers(users);
+    completeLogin(name, email);
+    showToast('অ্যাকাউন্ট তৈরি সফল হয়েছে! স্বাগতম, ' + name);
+  });
+
+  // Google Quick Sign-In
+  document.getElementById('googleSignIn').onclick = function(){
+    var site = (typeof website_name !== 'undefined' && website_name ? website_name : 'Player');
+    completeLogin(site + ' User', 'user@gmail.com');
+    showToast('Google অ্যাকাউন্ট দিয়ে লগইন সফল হয়েছে!');
+  };
+
+  renderAccountMenu();
 })();
 
 // ==========================================
@@ -1646,10 +1995,12 @@ setInterval(fetchFreshAccountConfig, 15000);
 
   var buy=document.getElementById('buyBtn'), warn=document.getElementById('loginWarn');
   function upd(){
+    isLoggedIn = window.FFX_AUTH ? window.FFX_AUTH.isLoggedIn() : isLoggedIn;
     document.getElementById('needAmt').textContent=sel.price;
     if(isLoggedIn){warn.style.display='none';buy.textContent='অর্ডার করুন';buy.href='#';}
     else{warn.style.display='flex';buy.textContent='Login';buy.href=LOGIN_URL;}
   }
+  if(window.FFX_AUTH) window.FFX_AUTH.onChange(upd);
   document.querySelectorAll('#pkGrid .pk').forEach(function(b){
     b.onclick=function(){
       document.querySelectorAll('#pkGrid .pk').forEach(function(x){x.classList.remove('on')});
@@ -1673,7 +2024,7 @@ setInterval(fetchFreshAccountConfig, 15000);
     pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
   };
   buy.addEventListener('click',function(e){
-    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    if(!isLoggedIn){ e.preventDefault(); if(window.openAuthModal) window.openAuthModal('signin'); return; }
     e.preventDefault();
     var uid=document.getElementById('uid').value.trim();
     if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
@@ -1706,11 +2057,13 @@ setInterval(fetchFreshAccountConfig, 15000);
 
   var buy=document.getElementById('uidBuy'), warn=document.getElementById('uidLoginWarn');
   function upd(){
+    isLoggedIn = window.FFX_AUTH ? window.FFX_AUTH.isLoggedIn() : isLoggedIn;
     document.getElementById('uidNeed').textContent=sel.price;
     document.getElementById('uidBal').textContent=BALANCE.toFixed(2);
     if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
     else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
   }
+  if(window.FFX_AUTH) window.FFX_AUTH.onChange(upd);
   var balRow=document.getElementById('uidBalRow'), rf=document.getElementById('uidRf');
   rf.onclick=function(){
     rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
@@ -1756,7 +2109,7 @@ setInterval(fetchFreshAccountConfig, 15000);
     pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
   };
   buy.addEventListener('click',function(e){
-    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    if(!isLoggedIn){ e.preventDefault(); if(window.openAuthModal) window.openAuthModal('signin'); return; }
     e.preventDefault();
     var uid=inp.value.trim();
     if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
@@ -1788,11 +2141,13 @@ setInterval(fetchFreshAccountConfig, 15000);
 
   var buy=document.getElementById('wmBuy'), warn=document.getElementById('wmLoginWarn');
   function upd(){
+    isLoggedIn = window.FFX_AUTH ? window.FFX_AUTH.isLoggedIn() : isLoggedIn;
     document.getElementById('wmNeed').textContent=sel.price;
     document.getElementById('wmBal').textContent=BALANCE.toFixed(2);
     if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
     else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
   }
+  if(window.FFX_AUTH) window.FFX_AUTH.onChange(upd);
   var balRow=document.getElementById('wmBalRow'), rf=document.getElementById('wmRf');
   rf.onclick=function(){
     rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
@@ -1838,7 +2193,7 @@ setInterval(fetchFreshAccountConfig, 15000);
     pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
   };
   buy.addEventListener('click',function(e){
-    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    if(!isLoggedIn){ e.preventDefault(); if(window.openAuthModal) window.openAuthModal('signin'); return; }
     e.preventDefault();
     var uid=inp.value.trim();
     if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
@@ -1870,11 +2225,13 @@ setInterval(fetchFreshAccountConfig, 15000);
 
   var buy=document.getElementById('wlBuy'), warn=document.getElementById('wlLoginWarn');
   function upd(){
+    isLoggedIn = window.FFX_AUTH ? window.FFX_AUTH.isLoggedIn() : isLoggedIn;
     document.getElementById('wlNeed').textContent=sel.price;
     document.getElementById('wlBal').textContent=BALANCE.toFixed(2);
     if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
     else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
   }
+  if(window.FFX_AUTH) window.FFX_AUTH.onChange(upd);
   var balRow=document.getElementById('wlBalRow'), rf=document.getElementById('wlRf');
   rf.onclick=function(){
     rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
@@ -1920,7 +2277,7 @@ setInterval(fetchFreshAccountConfig, 15000);
     pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
   };
   buy.addEventListener('click',function(e){
-    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    if(!isLoggedIn){ e.preventDefault(); if(window.openAuthModal) window.openAuthModal('signin'); return; }
     e.preventDefault();
     var uid=inp.value.trim();
     if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
@@ -1952,11 +2309,13 @@ setInterval(fetchFreshAccountConfig, 15000);
 
   var buy=document.getElementById('luBuy'), warn=document.getElementById('luLoginWarn');
   function upd(){
+    isLoggedIn = window.FFX_AUTH ? window.FFX_AUTH.isLoggedIn() : isLoggedIn;
     document.getElementById('luNeed').textContent=sel.price;
     document.getElementById('luBal').textContent=BALANCE.toFixed(2);
     if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
     else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
   }
+  if(window.FFX_AUTH) window.FFX_AUTH.onChange(upd);
   var balRow=document.getElementById('luBalRow'), rf=document.getElementById('luRf');
   rf.onclick=function(){
     rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
@@ -2002,7 +2361,7 @@ setInterval(fetchFreshAccountConfig, 15000);
     pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
   };
   buy.addEventListener('click',function(e){
-    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    if(!isLoggedIn){ e.preventDefault(); if(window.openAuthModal) window.openAuthModal('signin'); return; }
     e.preventDefault();
     var uid=inp.value.trim();
     if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
@@ -2034,11 +2393,13 @@ setInterval(fetchFreshAccountConfig, 15000);
 
   var buy=document.getElementById('inBuy'), warn=document.getElementById('inLoginWarn');
   function upd(){
+    isLoggedIn = window.FFX_AUTH ? window.FFX_AUTH.isLoggedIn() : isLoggedIn;
     document.getElementById('inNeed').textContent=sel.price;
     document.getElementById('inBal').textContent=BALANCE.toFixed(2);
     if(isLoggedIn){warn.style.display='none';balRow.style.display='flex';buy.textContent='Buy Now';buy.href='#';}
     else{warn.style.display='flex';balRow.style.display='none';buy.textContent='Login';buy.href=LOGIN_URL;}
   }
+  if(window.FFX_AUTH) window.FFX_AUTH.onChange(upd);
   var balRow=document.getElementById('inBalRow'), rf=document.getElementById('inRf');
   rf.onclick=function(){
     rf.classList.remove('spin'); void rf.offsetWidth; rf.classList.add('spin');
@@ -2084,7 +2445,7 @@ setInterval(fetchFreshAccountConfig, 15000);
     pn.innerHTML='<svg class="i"><use href="#chk"/></svg>আইডি: '+uid;
   };
   buy.addEventListener('click',function(e){
-    if(!isLoggedIn){ if(LOGIN_URL==='#')e.preventDefault(); return; }
+    if(!isLoggedIn){ e.preventDefault(); if(window.openAuthModal) window.openAuthModal('signin'); return; }
     e.preventDefault();
     var uid=inp.value.trim();
     if(!sel.name){toast('আগে একটি রিচার্জ প্যাকেজ সিলেক্ট করুন');return;}
